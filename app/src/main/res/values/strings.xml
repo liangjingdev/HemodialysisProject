@@ -9,7 +9,24 @@
          副主任医师，贵州省中医医院血液透析室主任，2001年毕业于贵阳中医学院中西医结合专业，2001年8月至今一直在贵州省中医医院肾病内科及血液透析室从事临床、教学及科研工作，曾于2004年在广东省中医院肾内科进修学习，2008年在卫生部中日友好医院肾内科及血透室进修学习，师从全国著名肾脏病专家谌贻璞教授，2015年在北京煤炭总医院进修学习，擅长运用中西医结合治疗各种急慢性肾脏疾病，对尿毒症患者血管通路的建立和维护有丰富经验，对中西医结合治疗提高尿毒症患者的生活质量和延长患者的生存时限有一定研究。现任中华中医药学会肾病分会委员，贵州省中西医结合血液净化学分会副主任委员，贵州省医学会血液净化学分会第一届委员会委员，贵州省中西医结合学会第一届肾病专业委员会委员，贵州省第一批名老中医学术经验继承人，发表并参与发表论文十篇，先后参与厅局级及省级科研课题11项，主持院级课题1项。
     </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--我的个人信息-->
+    <string name="header_pic">头像</string>
+    <string name="my_location">我的地址</string>
+    <string name="gender">性别</string>
+    <string name="not_fill">未填写</string>
+    <string name="cell_phone">手机号</string>
+    <string name="user_name">用户名</string>
+    <string name="real_name">真实姓名</string>
+    <string name="password">密码</string>
+    <string name="id_number">身份证号码</string>
+    <string name="diagnosis_Number">诊断号</string>
+
+    <!-- 修改个人信息-->
+    <string name="change_user_name">修改用户名！</string>
+    <string name="change_real_name">修改姓名！</string>
+    <string name="change_cell_phone">修改手机号码！</string>
+    <string name="change_my_location">修改地址！</string>
+    <string name="change_id_number">修改身份证号码！</string>
+    <string name="change_password">修改密码！</string>
 
 </resources>

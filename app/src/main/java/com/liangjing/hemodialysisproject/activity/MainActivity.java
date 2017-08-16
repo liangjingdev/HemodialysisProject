@@ -16,6 +16,7 @@ import com.liangjing.hemodialysisproject.R;
 import com.liangjing.hemodialysisproject.fragment.AboutFragment;
 import com.liangjing.hemodialysisproject.fragment.DoctorListFragment;
 import com.liangjing.hemodialysisproject.fragment.MainFragment;
+import com.liangjing.hemodialysisproject.fragment.UserDataFragment;
 import com.liangjing.hemodialysisproject.fragment.UserInformationFragment;
 import com.liangjing.hemodialysisproject.utils.ViewUtil;
 
@@ -113,7 +114,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.navigation_item_user_data:
                         mToolbar.setTitle("个人资料");
-                        switchFragment(UserInformationFragment.class);
+                        switchFragment(UserDataFragment.class);
                         break;
                     case R.id.navigation_item_order:
                         mToolbar.setTitle("预约挂号");

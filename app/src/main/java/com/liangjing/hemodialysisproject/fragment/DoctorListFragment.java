@@ -4,32 +4,35 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.liangjing.hemodialysisproject.Base.BaseFragment;
 import com.liangjing.hemodialysisproject.R;
 import com.liangjing.hemodialysisproject.activity.DoctorDetailActivity;
-import com.liangjing.hemodialysisproject.adapter.CardViewAdapter;
 import com.liangjing.hemodialysisproject.bean.DoctorBean;
-import com.liangjing.hemodialysisproject.listener.OnRecyclerItemClickListener;
+import com.liangjing.hemodialysisproject.utils.CardDataUtil;
+import com.liangjing.unirecyclerviewlib.adapter.AdapterForRecyclerView;
+import com.liangjing.unirecyclerviewlib.adapter.OptionViewHolder;
+import com.liangjing.unirecyclerviewlib.adapter.ViewHolderForRecyclerView;
+import com.liangjing.unirecyclerviewlib.listener.OnItemClickListener;
+import com.liangjing.unirecyclerviewlib.recyclerview.OptionRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * function:医生列表(预约挂号Fragment)
+ * function:医生列表
  */
 public class DoctorListFragment extends BaseFragment {
 
-    private RecyclerView mRecyclerView;
-    private CardViewAdapter mAdapter;
+    private OptionRecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private Handler handler;
-    private int lastVisibleItem;
+    private List<DoctorBean> mBeans;
+    private AdapterForRecyclerView mAdapter;
 
     @Override
     protected int setLayoutResourceID() {
@@ -38,15 +41,10 @@ public class DoctorListFragment extends BaseFragment {
 
     @Override
     protected void init() {
-
+        mBeans = new ArrayList<>();
+        //给mBeans添加数据
+        mBeans = CardDataUtil.getCardViewData();
         handler = new Handler();
-
-        mAdapter = new CardViewAdapter(getContext(), new OnRecyclerItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                startActivityWithoutExtras(DoctorDetailActivity.class);
-            }
-        });
     }
 
 
@@ -61,10 +59,16 @@ public class DoctorListFragment extends BaseFragment {
     @Override
     protected void initEvents() {
 
-        //设置RecyclerView的item视图分布规则
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
+        //获取AdapterForRecyclerView对象
+        mAdapter = new AdapterForRecyclerView<DoctorBean>(getmContext(), mBeans, R.layout.doctor_item_layout) {
+            @Override
+            public void convert(ViewHolderForRecyclerView holder, DoctorBean doctorBean, int i) {
+                holder.setText(R.id.doctor_name, doctorBean.getDoctorName());
+                holder.setText(R.id.doctor_intro, doctorBean.getDoctorIntro());
+            }
+        };
+
+        //设置适配器
         mRecyclerView.setAdapter(mAdapter);
 
         //设置刷新时动画的颜色，可以设置4个
@@ -85,52 +89,28 @@ public class DoctorListFragment extends BaseFragment {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        List<DoctorBean> beans = new ArrayList<DoctorBean>();
+                        List<DoctorBean> beans = new ArrayList<>();
                         for (int i = 0; i < 5; i++) {
                             DoctorBean doctorBean = new DoctorBean();
                             doctorBean.setDoctorName("姓名：" + "哈哈哈" + i);
                             doctorBean.setDoctorIntro("简介：" + getResources().getString(R.string.doctor));
                             beans.add(doctorBean);
                         }
-                        mAdapter.addItem(beans);
+                        mAdapter.setData(beans);
                         mSwipeRefreshLayout.setRefreshing(false);
-                        Toast.makeText(getContext(), "已更新...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getmContext(), "已更新...", Toast.LENGTH_SHORT).show();
                     }
                 }, 5000);
             }
         });
 
-
-        //设置上拉加载功能(监听滚动事件，检查是否已滚动到了最後一条item)
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem + 1 == mAdapter.getItemCount()) {
-                    mAdapter.changeStatus(CardViewAdapter.PULL_UP_LOAD_MORE);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            List<DoctorBean> beans = new ArrayList<>();
-                            for (int i = 0; i < 5; i++) {
-                                DoctorBean doctorBean = new DoctorBean();
-                                doctorBean.setDoctorName("姓名：" + "溜溜" + i);
-                                doctorBean.setDoctorIntro("简介：" + getResources().getString(R.string.doctor));
-                                beans.add(doctorBean);
-                            }
-                            mAdapter.addMoreItem(beans);
-                            mAdapter.changeStatus(CardViewAdapter.LOADING_MORE);
-                        }
-                    }, 2500);
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+            public void onItemClick(OptionViewHolder optionViewHolder, ViewGroup viewGroup, View view, int i) {
+                startActivityWithoutExtras(DoctorDetailActivity.class);
             }
         });
+
     }
 
 }

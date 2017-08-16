@@ -19,7 +19,7 @@ public abstract class BaseFragment extends Fragment {
 
     //创建一些被继承的Fragment所可能需要用到的变量。在该底层Fragment中通过一些方法将其返回。
     private Context mContext;
-    private View mContentView;
+    private View mContentView;//需要通过mContentView来获取Fragment布局里面的控件
 
 
     /**
@@ -93,7 +93,7 @@ public abstract class BaseFragment extends Fragment {
      *
      * @return
      */
-    public Context getMContext() {
+    public Context getmContext() {
         return mContext;
     }
 

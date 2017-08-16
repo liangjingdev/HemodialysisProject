@@ -14,11 +14,11 @@ import java.util.List;
 
 public class CardDataUtil {
 
-    public static List<DoctorBean> getCardViewDatas() {
+    public static List<DoctorBean> getCardViewData() {
 
-        List<DoctorBean> beans = new ArrayList<DoctorBean>();
+        List<DoctorBean> beans = new ArrayList<>();
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 20; i++) {
             DoctorBean mDoctorBean = new DoctorBean();
             mDoctorBean.setDoctorName("姓名：" + "牛逼" + ":" + i);
             mDoctorBean.setDoctorIntro("简介：" + String.valueOf(R.string.doctor));

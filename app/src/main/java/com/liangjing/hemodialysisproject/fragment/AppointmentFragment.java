@@ -1,14 +1,20 @@
 package com.liangjing.hemodialysisproject.fragment;
 
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
+import android.widget.Toast;
 
 import com.liangjing.hemodialysisproject.Base.BaseFragment;
 import com.liangjing.hemodialysisproject.R;
-import com.liangjing.hemodialysisproject.adapter.AppointmentAdapter;
+import com.liangjing.hemodialysisproject.utils.UpdateTimeUtil;
+import com.liangjing.unirecyclerviewlib.adapter.AdapterForRecyclerView;
+import com.liangjing.unirecyclerviewlib.adapter.ViewHolderForRecyclerView;
+import com.liangjing.unirecyclerviewlib.recyclerview.OptionRecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * function:医生详情界面--预约Fragment
@@ -25,10 +31,12 @@ import com.liangjing.hemodialysisproject.adapter.AppointmentAdapter;
  */
 public class AppointmentFragment extends BaseFragment implements AppBarLayout.OnOffsetChangedListener {
 
-    private RecyclerView mRecyclerView;
-    private AppointmentAdapter mAdapter;
+    private OptionRecyclerView mRecyclerView;
+    private AdapterForRecyclerView mAdapter;
     private SwipeRefreshLayout mSwipe;
     private AppBarLayout mAppBarLayout;
+    private List<String> mData;
+    private Handler mHandler;
 
     @Override
     protected int setLayoutResourceID() {
@@ -37,15 +45,21 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
 
     @Override
     protected void init() {
-        mAdapter = new AppointmentAdapter();
+        mData = new ArrayList<>();
+        mData = UpdateTimeUtil.UpdateTime();
+        mHandler = new Handler();
     }
 
     @Override
     protected void initEvents() {
-        //设置RecyclerView的item视图分布规则
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
+
+        mAdapter = new AdapterForRecyclerView<String>(getContext(), mData, R.layout.gteat_item) {
+            @Override
+            public void convert(ViewHolderForRecyclerView holder, String item, int position) {
+                holder.setText(R.id.text, item);
+            }
+        };
+
         mRecyclerView.setAdapter(mAdapter);
 
         //设置刷新时动画的颜色，可以设置4个
@@ -60,9 +74,22 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
         mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //setRefreshing的作用是设置刷新加载效果的icon是否继续显示.
-                // setRefreshing(false)表示加载结束，停止播放加载动画。可以在调用网络请求(延时任务)请求最新数据完成之后调用该方法.
-                mSwipe.setRefreshing(false);
+
+                //可进行网络请求获取最新数据
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        List<String> list = new ArrayList<>();
+                        for (int i = 0; i < 5; i++) {
+                            list.add("更新" + i);
+                        }
+                        mAdapter.setData(list);
+                        //setRefreshing的作用是设置刷新加载效果的icon是否继续显示.
+                        // setRefreshing(false)表示加载结束，停止播放加载动画。可以在调用网络请求(延时任务)请求最新数据完成之后调用该方法.
+                        mSwipe.setRefreshing(false);
+                        Toast.makeText(getmContext(), "已更新...", Toast.LENGTH_SHORT).show();
+                    }
+                }, 5000);
             }
         });
     }
