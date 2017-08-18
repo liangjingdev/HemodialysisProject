@@ -12,6 +12,8 @@ public class DoctorBean {
 
     private String mDoctorIntro;
 
+    private String mOrderDate;
+
     public String getDoctorName() {
         return mDoctorName;
     }
@@ -28,4 +30,11 @@ public class DoctorBean {
         this.mDoctorIntro = mDoctorIntro;
     }
 
+    public String getmOrderDate() {
+        return mOrderDate;
+    }
+
+    public void setmOrderDate(String mOrderDate) {
+        this.mOrderDate = mOrderDate;
+    }
 }

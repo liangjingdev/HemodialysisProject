@@ -135,6 +135,13 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
+    protected void startActivityForResult(Class<?> clazz, Bundle extras) {
+        Intent intent = new Intent(getActivity(), clazz);
+        intent.putExtras(extras);
+        startActivityForResult(intent,0);
+    }
+
+
 }
 
 

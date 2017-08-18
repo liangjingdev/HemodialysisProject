@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.liangjing.hemodialysisproject.Base.BaseFragment;
 import com.liangjing.hemodialysisproject.R;
-import com.liangjing.hemodialysisproject.utils.UpdateTimeUtil;
+import com.liangjing.hemodialysisproject.utils.OrderTimeUtil;
 import com.liangjing.unirecyclerviewlib.adapter.AdapterForRecyclerView;
 import com.liangjing.unirecyclerviewlib.adapter.ViewHolderForRecyclerView;
 import com.liangjing.unirecyclerviewlib.recyclerview.OptionRecyclerView;
@@ -46,17 +46,17 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
     @Override
     protected void init() {
         mData = new ArrayList<>();
-        mData = UpdateTimeUtil.UpdateTime();
+        mData = OrderTimeUtil.getOrderTime();
         mHandler = new Handler();
     }
 
     @Override
     protected void initEvents() {
 
-        mAdapter = new AdapterForRecyclerView<String>(getContext(), mData, R.layout.gteat_item) {
+        mAdapter = new AdapterForRecyclerView<String>(getContext(), mData, R.layout.order_doctor_item_layout) {
             @Override
             public void convert(ViewHolderForRecyclerView holder, String item, int position) {
-                holder.setText(R.id.text, item);
+                holder.setText(R.id.orderTime, item);
             }
         };
 
@@ -81,7 +81,7 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
                     public void run() {
                         List<String> list = new ArrayList<>();
                         for (int i = 0; i < 5; i++) {
-                            list.add("更新" + i);
+                            list.add("2017年3月1" + i + "日" + "  14:20");
                         }
                         mAdapter.setData(list);
                         //setRefreshing的作用是设置刷新加载效果的icon是否继续显示.

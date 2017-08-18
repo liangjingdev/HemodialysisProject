@@ -20,6 +20,7 @@
     <string name="password">密码</string>
     <string name="id_number">身份证号码</string>
     <string name="diagnosis_Number">诊断号</string>
+    <string name="birthday">生日日期</string>
 
     <!-- 修改个人信息-->
     <string name="change_user_name">修改用户名！</string>
@@ -28,5 +29,17 @@
     <string name="change_my_location">修改地址！</string>
     <string name="change_id_number">修改身份证号码！</string>
     <string name="change_password">修改密码！</string>
+    <string name="change_user_gender">修改性别！</string>
+    <string name="change_birthday">修改生日日期!</string>
+
+    <!-- 个人排班信息 -->
+    <string name="patient_name">患者 ：</string>
+    <string name="specific_dialysis_time">具体透析时间 ：</string>
+    <string name="doctor_name">医生 ：</string>
+    <string name="location">地点 ：</string>
+    <string name="machine_number">血透机编号 ：</string>
+    <string name="dialysis_scheme">透析方案 ：</string>
+    <string name="tip1">提示：当前是您的个人周期排班信息！</string>
+    <string name="tip2">提示：以下是您已经预约过的医生！点击即可进入预约排班以及查询医生的排班情况！</string>
 
 </resources>

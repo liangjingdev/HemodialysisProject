@@ -3,6 +3,7 @@ package com.liangjing.hemodialysisproject.Base;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.liangjing.hemodialysisproject.helper.ToolBarHelper;
 
@@ -81,5 +82,17 @@ public abstract class ToolBarActivity extends AppCompatActivity {
     protected void init() {
 
     }
+
+    /**
+     * function:绑定view视图
+     *
+     * @param id
+     * @param <T>
+     * @return
+     */
+    protected <T extends View> T $(int id) {
+        return (T) super.findViewById(id);
+    }
+
 
 }

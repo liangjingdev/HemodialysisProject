@@ -1,18 +1,17 @@
 package com.liangjing.hemodialysisproject.fragment;
 
-
 import com.liangjing.hemodialysisproject.Base.BaseFragment;
 import com.liangjing.hemodialysisproject.R;
 
 
 /**
- * function:用户个人信息Fragment
+ * function:查询该医生当前的排班情况
  */
-public class UserInformationFragment extends BaseFragment {
+public class QueryFragment extends BaseFragment {
 
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.user_information_fragment_layout;
+        return R.layout.query_fragment_layout;
     }
 }

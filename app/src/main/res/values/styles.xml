@@ -36,4 +36,11 @@
         <item name="android:background">@color/white</item>
     </style>
 
+    <!--实上滑线-->
+    <style name="overLine">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
 </resources>

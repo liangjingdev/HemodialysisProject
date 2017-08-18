@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.liangjing.unirecyclerviewlib.adapter.OptionViewHolder;
 import com.liangjing.unirecyclerviewlib.adapter.ViewHolderForRecyclerView;
 import com.liangjing.unirecyclerviewlib.listener.OnItemClickListener;
 import com.liangjing.unirecyclerviewlib.recyclerview.OptionRecyclerView;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +28,14 @@ import java.util.List;
 /**
  * function:医生列表
  */
-public class DoctorListFragment extends BaseFragment {
+public class DoctorListFragment extends BaseFragment implements MaterialSearchBar.OnSearchActionListener {
 
     private OptionRecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private Handler handler;
     private List<DoctorBean> mBeans;
     private AdapterForRecyclerView mAdapter;
+    private MaterialSearchBar mSearchBar;
 
     @Override
     protected int setLayoutResourceID() {
@@ -45,6 +48,7 @@ public class DoctorListFragment extends BaseFragment {
         //给mBeans添加数据
         mBeans = CardDataUtil.getCardViewData();
         handler = new Handler();
+        mSearchBar = (MaterialSearchBar) getContentView().findViewById(R.id.searchBar);
     }
 
 
@@ -58,6 +62,9 @@ public class DoctorListFragment extends BaseFragment {
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void initEvents() {
+
+        //为搜索框设置监听功能
+        mSearchBar.setOnSearchActionListener(this);
 
         //获取AdapterForRecyclerView对象
         mAdapter = new AdapterForRecyclerView<DoctorBean>(getmContext(), mBeans, R.layout.doctor_item_layout) {
@@ -110,6 +117,27 @@ public class DoctorListFragment extends BaseFragment {
                 startActivityWithoutExtras(DoctorDetailActivity.class);
             }
         });
+
+    }
+
+
+    @Override
+    public void onSearchStateChanged(boolean enabled) {
+        String s = enabled ? "enabled" : "disabled";
+        Toast.makeText(getmContext(), "Search " + s, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSearchConfirmed(CharSequence text) {
+        if (TextUtils.isEmpty(text)) {
+            Toast.makeText(getmContext(), "搜索数据为空，请重新输入！", Toast.LENGTH_SHORT).show();
+        } else {
+            startActivityWithoutExtras(DoctorDetailActivity.class);
+        }
+    }
+
+    @Override
+    public void onButtonClicked(int buttonCode) {
 
     }
 

@@ -27,4 +27,3 @@ public class DoctorIntroFragment extends BaseFragment {
         mTextView.setText(R.string.doctor);
     }
 }
-

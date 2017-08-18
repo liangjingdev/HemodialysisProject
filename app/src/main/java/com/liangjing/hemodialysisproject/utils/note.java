@@ -2,6 +2,8 @@ package com.liangjing.hemodialysisproject.utils;
 
 /**
  * Created by liangjing on 2017/8/7.
+ *
+ * function:笔记
  */
 
 public class note {

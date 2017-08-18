@@ -6,16 +6,16 @@ import java.util.List;
 /**
  * Created by liangjing on 2017/8/17.
  *
- * function:更新医生的可预约时间表
+ * function:获取医生的可预约时间集
  */
 
-public class UpdateTimeUtil {
+public class OrderTimeUtil {
 
-    public static List<String> UpdateTime(){
+    public static List<String> getOrderTime(){
 
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            list.add("侃侃大山" + i);
+            list.add("2017年2月1" + i + "日" + "  14:20");
         }
         return list;
     }

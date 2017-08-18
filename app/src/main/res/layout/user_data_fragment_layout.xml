@@ -55,7 +55,7 @@
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="某某人"
+            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />
@@ -73,7 +73,7 @@
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="王牌"
+            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />
@@ -91,7 +91,7 @@
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="男"
+            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />
@@ -148,6 +148,24 @@
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp" />
+
+        <View
+            style="@style/Line"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px" />
+
+        <com.liangjing.library.OptionItemView
+            android:id="@+id/birthday"
+            style="@style/OptionItem"
+            android:background="@drawable/option_item_secector"
+            app:left_text="@string/birthday"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="30px"
+            app:left_text_size="16sp"
+            app:right_text="@string/not_fill"
+            app:right_text_color="@color/gray2"
+            app:right_text_margin_right="40px"
+            app:right_text_size="14sp" />
 
         <View
             style="@style/Line"
