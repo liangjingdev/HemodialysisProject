@@ -23,6 +23,10 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+
+/**
+ * function:预约排班以及查询医生排班情况activity
+ */
 public class DoctorScheduleActivity extends BaseActivity implements AppBarLayout.OnOffsetChangedListener {
 
     private ArrayList<Fragment> mFragmentList;
@@ -43,23 +47,23 @@ public class DoctorScheduleActivity extends BaseActivity implements AppBarLayout
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.doctor_schedule_activity_layout;
+        return R.layout.activity_doctor_schedule_layout;
     }
 
     @Override
     protected void setUpView() {
         //初始化FragmentAdapter
         mAdapter = new FragPagerAdapter(getSupportFragmentManager(), mFragmentList, mTitleList);
-        mCollapsingToolbarLayout = $(R.id.collapsing_toolbar_layout);
-        mAppBarLayout = $(R.id.app_bar_layout);
+        mCollapsingToolbarLayout = $(R.id.collapsingToolbarLayout);
+        mAppBarLayout = $(R.id.appBarLayout);
         mToolbar = $(R.id.toolbar);
-        mViewPager = $(R.id.view_pager);
+        mViewPager = $(R.id.viewPager);
         setSupportActionBar(mToolbar);
-        mHeadLayout = $(R.id.doctor_layout);
-        mTabLayout = $(R.id.toolbar_tab);
-        mCircleImageView = $(R.id.doctor_img);
-        nameTV = $(R.id.doctor_name);
-        positionTV = $(R.id.doctor_position);
+        mHeadLayout = $(R.id.doctorLayout);
+        mTabLayout = $(R.id.toolbarTab);
+        mCircleImageView = $(R.id.doctorImg);
+        nameTV = $(R.id.doctorName);
+        positionTV = $(R.id.doctorPosition);
     }
 
     @Override

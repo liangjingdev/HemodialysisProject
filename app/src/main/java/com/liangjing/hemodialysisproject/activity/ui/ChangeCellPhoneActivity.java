@@ -18,7 +18,7 @@ public class ChangeCellPhoneActivity extends ToolBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_cell_phone_activity_layout);
+        setContentView(R.layout.activity_change_cell_phone_layout);
     }
 
     @Override

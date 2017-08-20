@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * function:预约排班
+ * function:预约排班fragment
  */
 public class OrderFragment extends BaseFragment {
 
@@ -20,7 +20,7 @@ public class OrderFragment extends BaseFragment {
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.order_fragment_layout;
+        return R.layout.fragment_order_layout;
     }
 
     @Override

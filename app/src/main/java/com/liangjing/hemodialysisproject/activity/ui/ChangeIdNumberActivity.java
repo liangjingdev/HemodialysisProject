@@ -18,7 +18,7 @@ public class ChangeIdNumberActivity extends ToolBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_id_number_activity_layout);
+        setContentView(R.layout.activity_change_id_number_layout);
     }
 
     @Override

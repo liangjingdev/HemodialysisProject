@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * function:列出已经预约过的医生列表，点击进入预约排班或者查询该医生的排班情况
  */
-public class OrderScheduleFragment extends BaseFragment {
+public class AppointedListFragment extends BaseFragment {
 
     private OptionRecyclerView mRv;
     private AdapterForRecyclerView mAdapter;
@@ -30,7 +30,7 @@ public class OrderScheduleFragment extends BaseFragment {
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.order_schedule_fragment_layout;
+        return R.layout.fragment_appointed_list_layout;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class OrderScheduleFragment extends BaseFragment {
     @Override
     protected void initEvents() {
 
-        mAdapter = new AdapterForRecyclerView<DoctorBean>(getmContext(), list, R.layout.already_oder_item_layout) {
+        mAdapter = new AdapterForRecyclerView<DoctorBean>(getmContext(), list, R.layout.item_already_oder_layout) {
             @Override
             public void convert(ViewHolderForRecyclerView holder, DoctorBean doctorBean, int position) {
                 holder.setText(R.id.doctorName, doctorBean.getDoctorName());

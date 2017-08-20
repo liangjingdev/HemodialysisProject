@@ -40,7 +40,7 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.appointment_fragment_layout;
+        return R.layout.fragment_appointment_layout;
     }
 
     @Override
@@ -53,10 +53,10 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
     @Override
     protected void initEvents() {
 
-        mAdapter = new AdapterForRecyclerView<String>(getContext(), mData, R.layout.order_doctor_item_layout) {
+        mAdapter = new AdapterForRecyclerView<String>(getContext(), mData, R.layout.item_order_doctor_layout) {
             @Override
             public void convert(ViewHolderForRecyclerView holder, String item, int position) {
-                holder.setText(R.id.orderTime, item);
+                holder.setText(R.id.orderDate, item);
             }
         };
 
@@ -96,7 +96,7 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
 
     @Override
     protected void setUpView() {
-        mRecyclerView = $(R.id.recycler_view);
+        mRecyclerView = $(R.id.rv);
         mSwipe = $(R.id.swipe_refresh_layout);
         mAppBarLayout = (AppBarLayout) getActivity().findViewById(R.id.app_bar_layout);
     }

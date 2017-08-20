@@ -66,7 +66,7 @@
             android:layout_marginRight="30px" />
 
         <com.liangjing.library.OptionItemView
-            android:id="@+id/realName"
+            android:id="@+id/userRealName"
             style="@style/OptionItem"
             android:background="@drawable/option_item_secector"
             app:left_text="@string/real_name"
@@ -105,7 +105,7 @@
         android:orientation="vertical">
 
         <com.liangjing.library.OptionItemView
-            android:id="@+id/myLocation"
+            android:id="@+id/userLocation"
             style="@style/OptionItem"
             android:background="@drawable/option_item_secector"
             app:left_text="@string/my_location"
@@ -123,7 +123,7 @@
             android:layout_marginRight="30px" />
 
         <com.liangjing.library.OptionItemView
-            android:id="@+id/cellPhone"
+            android:id="@+id/userCellPhone"
             style="@style/OptionItem"
             android:background="@drawable/option_item_secector"
             app:left_text="@string/cell_phone"
@@ -155,7 +155,7 @@
             android:layout_marginRight="30px" />
 
         <com.liangjing.library.OptionItemView
-            android:id="@+id/birthday"
+            android:id="@+id/userBirthday"
             style="@style/OptionItem"
             android:background="@drawable/option_item_secector"
             app:left_text="@string/birthday"
@@ -173,7 +173,7 @@
             android:layout_marginRight="30px" />
 
         <com.liangjing.library.OptionItemView
-            android:id="@+id/idNumber"
+            android:id="@+id/userIdNumber"
             style="@style/OptionItem"
             android:background="@drawable/option_item_secector"
             app:left_text="@string/id_number"

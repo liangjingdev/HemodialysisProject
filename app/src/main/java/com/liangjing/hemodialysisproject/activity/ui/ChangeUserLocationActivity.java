@@ -11,14 +11,14 @@ import com.liangjing.hemodialysisproject.R;
 
 import static com.liangjing.hemodialysisproject.R.id.toolBarTitle;
 
-public class ChangeMyLocationActivity extends ToolBarActivity {
+public class ChangeUserLocationActivity extends ToolBarActivity {
 
     private TextView mToolBarTitle;//设置toolBar上的title的文字信息.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_my_location_activity_layout);
+        setContentView(R.layout.activity_change_user_location_layout);
     }
 
     @Override

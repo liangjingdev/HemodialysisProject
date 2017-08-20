@@ -18,7 +18,7 @@ import com.liangjing.hemodialysisproject.fragment.AboutFragment;
 import com.liangjing.hemodialysisproject.fragment.CycleScheduleFragment;
 import com.liangjing.hemodialysisproject.fragment.DoctorListFragment;
 import com.liangjing.hemodialysisproject.fragment.MainFragment;
-import com.liangjing.hemodialysisproject.fragment.OrderScheduleFragment;
+import com.liangjing.hemodialysisproject.fragment.AppointedListFragment;
 import com.liangjing.hemodialysisproject.fragment.UserDataFragment;
 import com.liangjing.hemodialysisproject.utils.PatientSchemaUtil;
 import com.liangjing.hemodialysisproject.utils.UserDataUtil;
@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
      */
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.main_activity_layout;
+        return R.layout.activity_main_layout;
     }
 
 
@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
     protected void setUpView() {
         mToolbar = $(R.id.toolbar);
         mDrawerLayout = $(R.id.drawer_layout);
-        mNavigationView = $(R.id.navigation_view);
+        mNavigationView = $(R.id.navigationView);
 
         mToolbar.setTitle("首页");
         //这句一定要在下面几句之前调用，不然就会出现点击无反应
@@ -154,7 +154,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.navigation_order_schedule:
                         mToolbar.setTitle("预约排班");
-                        switchFragment(OrderScheduleFragment.class);
+                        switchFragment(AppointedListFragment.class);
                         break;
                     case R.id.navigation_patient_scheme:
                         mToolbar.setTitle("个人周期排班信息");

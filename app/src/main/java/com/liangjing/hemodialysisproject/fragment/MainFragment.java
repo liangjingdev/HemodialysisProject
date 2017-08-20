@@ -11,7 +11,7 @@ public class MainFragment extends BaseFragment {
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.main_fragment_layout;
+        return R.layout.fragment_main_layout;
     }
 
     @Override

@@ -18,18 +18,19 @@ import com.liangjing.hemodialysisproject.db.UserEntityHelper;
 import com.liangjing.hemodialysisproject.entity.UserEntity;
 
 import static com.liangjing.hemodialysisproject.R.id.toolBarTitle;
+import static com.liangjing.hemodialysisproject.R.id.userName;
 
 public class ChangeUserNameActivity extends ToolBarActivity implements View.OnClickListener{
 
     private TextView mToolBarTitle;//设置toolBar上的title的文字信息.
     private Button saveButton;
-    private EditText etName;
+    private EditText etUserName;
     private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_user_name_activity_layout);
+        setContentView(R.layout.activity_change_user_name_layout);
     }
 
     @Override
@@ -56,20 +57,20 @@ public class ChangeUserNameActivity extends ToolBarActivity implements View.OnCl
 
     @Override
     protected void setUpView() {
-        etName = $(R.id.etName);
+        etUserName = $(userName);
     }
 
 
     @Override
     protected void initEvents() {
         //设置数据
-        etName.setText(bundle.getString("userName", "未填写"));
+        etUserName.setText(bundle.getString("userName", "未填写"));
 
         //保存按钮监听
         saveButton.setOnClickListener(this);
 
         //设置EditText监听
-        etName.addTextChangedListener(new TextWatcher() {
+        etUserName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -77,7 +78,7 @@ public class ChangeUserNameActivity extends ToolBarActivity implements View.OnCl
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (etName.getText().toString().trim().length() > 0){
+                if (etUserName.getText().toString().trim().length() > 0){
                     saveButton.setEnabled(true);
                 }else {
                     saveButton.setEnabled(false);
@@ -110,7 +111,7 @@ public class ChangeUserNameActivity extends ToolBarActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.save:
-                String userName = etName.getText().toString().trim();
+                String userName = etUserName.getText().toString().trim();
 
                 //修改该用户在数据库中的用户名
                 UserEntityHelper helper = DbUtil.getUserEntityHelper();

@@ -8,7 +8,7 @@ public class AboutFragment extends BaseFragment {
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.about_fragment_layout;
+        return R.layout.fragment_about_layout;
     }
 
 }

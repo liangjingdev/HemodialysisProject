@@ -47,7 +47,7 @@ public class DoctorDetailActivity extends BaseActivity implements AppBarLayout.O
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.doctor_detail_activity_layout;
+        return R.layout.activity_doctor_detail_layout;
     }
 
 
@@ -71,13 +71,13 @@ public class DoctorDetailActivity extends BaseActivity implements AppBarLayout.O
         mCollapsingToolbarLayout = $(R.id.collapsing_toolbar_layout);
         mAppBarLayout = $(R.id.app_bar_layout);
         mToolbar = $(R.id.toolbar);
-        mViewPager = $(R.id.view_pager);
+        mViewPager = $(R.id.viewPager);
         setSupportActionBar(mToolbar);
-        mHeadLayout = $(R.id.doctor_layout);
-        mTabLayout = $(R.id.toolbar_tab);
-        mCircleImageView = $(R.id.doctor_img);
-        nameTV = $(R.id.doctor_name);
-        positionTV = $(R.id.doctor_position);
+        mHeadLayout = $(R.id.doctorLayout);
+        mTabLayout = $(R.id.toolbarTab);
+        mCircleImageView = $(R.id.doctorImg);
+        nameTV = $(R.id.doctorName);
+        positionTV = $(R.id.doctorPosition);
     }
 
 

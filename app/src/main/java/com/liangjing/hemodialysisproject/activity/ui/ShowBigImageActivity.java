@@ -10,6 +10,6 @@ public class ShowBigImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.show_big_image_activity_layout);
+        setContentView(R.layout.activity_show_big_image_layout);
     }
 }

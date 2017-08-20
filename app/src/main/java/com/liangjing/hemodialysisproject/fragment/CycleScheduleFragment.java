@@ -14,6 +14,10 @@ import com.liangjing.unirecyclerviewlib.recyclerview.OptionRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * function:患者个人周期排班信息
+ */
 public class CycleScheduleFragment extends BaseFragment {
 
     private OptionRecyclerView mRv;
@@ -24,7 +28,7 @@ public class CycleScheduleFragment extends BaseFragment {
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.cycle_schedule_fragment_layout;
+        return R.layout.fragment_cycle_schedule_layout;
     }
 
     @Override
@@ -51,14 +55,14 @@ public class CycleScheduleFragment extends BaseFragment {
     @Override
     protected void initEvents() {
 
-        mAdapter = new AdapterForRecyclerView<PatientSchemeEntity>(getmContext(), mNewList, R.layout.cycle_schedule_item_layout) {
+        mAdapter = new AdapterForRecyclerView<PatientSchemeEntity>(getmContext(), mNewList, R.layout.item_cycle_schedule_layout) {
             @Override
             public void convert(ViewHolderForRecyclerView holder, PatientSchemeEntity entity, int position) {
                 holder.setText(R.id.patientName, entity.getPatientName());
                 holder.setText(R.id.doctorName, entity.getDoctorName());
                 holder.setText(R.id.dialysisLocation, entity.getLocation());
                 holder.setText(R.id.dialysisScheme, entity.getDialysisScheme());
-                holder.setText(R.id.dialysisTime, entity.getDialysisTime());
+                holder.setText(R.id.dialysisDate, entity.getDialysisTime());
                 holder.setText(R.id.machineNumber, entity.getMachineNumber());
             }
         };

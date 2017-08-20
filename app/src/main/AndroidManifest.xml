@@ -30,13 +30,13 @@
         <activity android:name=".activity.ui.ChangeUserNameActivity" />
         <activity android:name=".activity.ui.ChangeRealNameActivity" />
         <activity android:name=".activity.ui.ChangeUserGenderActivity" />
-        <activity android:name=".activity.ui.ChangeMyLocationActivity" />
+        <activity android:name=".activity.ui.ChangeUserLocationActivity" />
         <activity android:name=".activity.ui.ChangeCellPhoneActivity" />
         <activity android:name=".activity.ui.ChangeIdNumberActivity" />
         <activity android:name=".activity.ui.ChangePasswordActivity" />
         <activity android:name=".activity.ui.ChangeBirthdayActivity" />
         <activity android:name=".fragment.CycleScheduleFragment" />
-        <activity android:name=".fragment.OrderScheduleFragment" />
+        <activity android:name=".fragment.AppointedListFragment" />
         <activity android:name=".activity.DoctorScheduleActivity" />
         <activity android:name=".fragment.OrderFragment" />
         <activity android:name=".fragment.QueryFragment"></activity>

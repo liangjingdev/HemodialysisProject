@@ -10,6 +10,6 @@ public class ChangeUserGenderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_user_gender_activity_layout);
+        setContentView(R.layout.activity_change_user_gender_layout);
     }
 }

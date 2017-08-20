@@ -8,7 +8,7 @@
     android:background="@color/windowBackground">
 
        <TextView
-           android:id="@+id/orderTime"
+           android:id="@+id/orderDate"
            android:layout_weight="1"
            android:layout_width="0dp"
            android:layout_height="100px"

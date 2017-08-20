@@ -39,7 +39,7 @@ public class DoctorListFragment extends BaseFragment implements MaterialSearchBa
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.doctor_list_fragment_layout;
+        return R.layout.fragment_doctor_list_layout;
     }
 
     @Override
@@ -54,8 +54,8 @@ public class DoctorListFragment extends BaseFragment implements MaterialSearchBa
 
     @Override
     protected void setUpView() {
-        mRecyclerView = $(R.id.recycler_view);
-        mSwipeRefreshLayout = $(R.id.swipe_refresh_layout);
+        mRecyclerView = $(R.id.rv);
+        mSwipeRefreshLayout = $(R.id.swipeRefreshLayout);
     }
 
 
@@ -67,11 +67,11 @@ public class DoctorListFragment extends BaseFragment implements MaterialSearchBa
         mSearchBar.setOnSearchActionListener(this);
 
         //获取AdapterForRecyclerView对象
-        mAdapter = new AdapterForRecyclerView<DoctorBean>(getmContext(), mBeans, R.layout.doctor_item_layout) {
+        mAdapter = new AdapterForRecyclerView<DoctorBean>(getmContext(), mBeans, R.layout.item_doctor_layout) {
             @Override
             public void convert(ViewHolderForRecyclerView holder, DoctorBean doctorBean, int i) {
-                holder.setText(R.id.doctor_name, doctorBean.getDoctorName());
-                holder.setText(R.id.doctor_intro, doctorBean.getDoctorIntro());
+                holder.setText(R.id.doctorName, doctorBean.getDoctorName());
+                holder.setText(R.id.doctorIntro, doctorBean.getDoctorIntro());
             }
         };
 

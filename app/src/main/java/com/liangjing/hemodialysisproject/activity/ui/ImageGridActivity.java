@@ -10,6 +10,6 @@ public class ImageGridActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.image_grid_activity_layout);
+        setContentView(R.layout.activity_image_grid_layout);
     }
 }

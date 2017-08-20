@@ -9,7 +9,7 @@ import com.liangjing.hemodialysisproject.Base.BaseFragment;
 import com.liangjing.hemodialysisproject.R;
 import com.liangjing.hemodialysisproject.activity.ui.ChangeCellPhoneActivity;
 import com.liangjing.hemodialysisproject.activity.ui.ChangeIdNumberActivity;
-import com.liangjing.hemodialysisproject.activity.ui.ChangeMyLocationActivity;
+import com.liangjing.hemodialysisproject.activity.ui.ChangeUserLocationActivity;
 import com.liangjing.hemodialysisproject.activity.ui.ChangeRealNameActivity;
 import com.liangjing.hemodialysisproject.activity.ui.ChangeUserGenderActivity;
 import com.liangjing.hemodialysisproject.activity.ui.ChangeUserNameActivity;
@@ -46,7 +46,7 @@ public class UserDataFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.user_data_fragment_layout;
+        return R.layout.fragment_user_data_layout;
     }
 
     @Override
@@ -61,13 +61,13 @@ public class UserDataFragment extends BaseFragment implements View.OnClickListen
         mLlHeader = $(R.id.llHeader);
         mIvHeader = $(R.id.ivHeader);
         mUserName = $(R.id.userName);
-        mRealName = $(R.id.realName);
+        mRealName = $(R.id.userRealName);
         mUserGender = $(R.id.userGender);
-        mMyLocation = $(R.id.myLocation);
-        mCellPhone = $(R.id.cellPhone);
+        mMyLocation = $(R.id.userLocation);
+        mCellPhone = $(R.id.userCellPhone);
         mDiagnosisNumber = $(R.id.diagnosisNumber);
-        mIdNumber = $(R.id.idNumber);
-        mBirthday = $(R.id.birthday);
+        mIdNumber = $(R.id.userIdNumber);
+        mBirthday = $(R.id.userBirthday);
     }
 
     @Override
@@ -129,22 +129,22 @@ public class UserDataFragment extends BaseFragment implements View.OnClickListen
             case R.id.userName:
                 startActivityForResult(ChangeUserNameActivity.class,mBundle);
                 break;
-            case R.id.realName:
+            case R.id.userRealName:
                 startActivityWithoutExtras(ChangeRealNameActivity.class);
                 break;
             case R.id.userGender:
                 startActivityWithoutExtras(ChangeUserGenderActivity.class);
                 break;
-            case R.id.myLocation:
-                startActivityWithoutExtras(ChangeMyLocationActivity.class);
+            case R.id.userLocation:
+                startActivityWithoutExtras(ChangeUserLocationActivity.class);
                 break;
-            case R.id.cellPhone:
+            case R.id.userCellPhone:
                 startActivityWithoutExtras(ChangeCellPhoneActivity.class);
                 break;
-            case R.id.idNumber:
+            case R.id.userIdNumber:
                 startActivityWithoutExtras(ChangeIdNumberActivity.class);
                 break;
-            case R.id.birthday:
+            case R.id.userBirthday:
                 break;
         }
     }

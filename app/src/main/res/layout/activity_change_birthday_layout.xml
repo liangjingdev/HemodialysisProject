@@ -7,7 +7,7 @@
 
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/userBirthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10px"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="22px"
-        android:text="@string/change_my_location"
+        android:text="@string/change_birthday"
         android:textColor="@color/gray1"
         android:textSize="14sp"/>
 

@@ -18,7 +18,7 @@ public class ChangeBirthdayActivity extends ToolBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_birthday_activity_layout);
+        setContentView(R.layout.activity_change_birthday_layout);
     }
 
     @Override
