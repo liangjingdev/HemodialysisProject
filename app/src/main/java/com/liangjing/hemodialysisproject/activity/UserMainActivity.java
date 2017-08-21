@@ -24,7 +24,7 @@ import com.liangjing.hemodialysisproject.utils.PatientSchemaUtil;
 import com.liangjing.hemodialysisproject.utils.UserDataUtil;
 import com.liangjing.hemodialysisproject.utils.ViewUtil;
 
-public class MainActivity extends BaseActivity {
+public class UserMainActivity extends BaseActivity {
 
     private DrawerLayout mDrawerLayout; //侧边菜单视图
     private ActionBarDrawerToggle mDrawerToggle;  //菜单开关
@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
      */
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.activity_main_layout;
+        return R.layout.activity_user_main_layout;
     }
 
 
