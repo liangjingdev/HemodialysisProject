@@ -19,7 +19,7 @@ import java.util.List;
 
 
 /**
- * function:列出已经预约过的医生列表，点击进入预约排班或者查询该医生的排班情况
+ * function:列出已经预约过的医生列表，点击进入预约排班
  */
 public class AppointedListFragment extends BaseFragment {
 
@@ -51,7 +51,7 @@ public class AppointedListFragment extends BaseFragment {
             @Override
             public void convert(ViewHolderForRecyclerView holder, DoctorBean doctorBean, int position) {
                 holder.setText(R.id.doctorName, doctorBean.getDoctorName());
-                holder.setText(R.id.orderDate, doctorBean.getmOrderDate());
+                holder.setText(R.id.orderDate, "2017-9-23");
             }
         };
         mRv.setAdapter(mAdapter);

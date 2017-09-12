@@ -135,10 +135,26 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-    protected void startActivityForResult(Class<?> clazz, Bundle extras) {
+    /**
+     * function:携带数据
+     * @param clazz
+     * @param extras
+     * @param requestCode
+     */
+    protected void startActivityForResult(Class<?> clazz, Bundle extras, int requestCode) {
         Intent intent = new Intent(getActivity(), clazz);
         intent.putExtras(extras);
-        startActivityForResult(intent,0);
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * function:不携带数据
+     * @param clazz
+     * @param requestCode
+     */
+    protected void startActivityForResult(Class<?> clazz, int requestCode) {
+        Intent intent = new Intent(getActivity(), clazz);
+        startActivityForResult(intent, requestCode);
     }
 
 

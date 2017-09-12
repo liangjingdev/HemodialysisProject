@@ -16,7 +16,7 @@
             android:id="@+id/llHeader"
             android:layout_width="match_parent"
             android:layout_height="160px"
-            android:background="@drawable/option_item_secector"
+            android:background="@drawable/option_item_selector"
             android:gravity="center_vertical"
             android:paddingRight="6px">
 
@@ -37,7 +37,6 @@
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
                 android:scaleType="centerCrop"
-                android:src="@drawable/avatar"
                 app:civ_border_color="#00BFFF"
                 app:civ_border_width="2dp" />
         </com.zhy.autolayout.AutoLinearLayout>
@@ -50,12 +49,11 @@
         <com.liangjing.library.OptionItemView
             android:id="@+id/userName"
             style="@style/OptionItem"
-            android:background="@drawable/option_item_secector"
+            android:background="@drawable/option_item_selector"
             app:left_text="@string/user_name"
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />
@@ -68,12 +66,11 @@
         <com.liangjing.library.OptionItemView
             android:id="@+id/userRealName"
             style="@style/OptionItem"
-            android:background="@drawable/option_item_secector"
+            android:background="@drawable/option_item_selector"
             app:left_text="@string/real_name"
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />
@@ -86,12 +83,11 @@
         <com.liangjing.library.OptionItemView
             android:id="@+id/userGender"
             style="@style/OptionItem"
-            android:background="@drawable/option_item_secector"
+            android:background="@drawable/option_item_selector"
             app:left_text="@string/gender"
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />
@@ -105,14 +101,13 @@
         android:orientation="vertical">
 
         <com.liangjing.library.OptionItemView
-            android:id="@+id/userLocation"
+            android:id="@+id/userEmail"
             style="@style/OptionItem"
-            android:background="@drawable/option_item_secector"
-            app:left_text="@string/my_location"
+            android:background="@drawable/option_item_selector"
+            app:left_text="@string/user_email"
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />
@@ -122,15 +117,15 @@
             android:layout_marginLeft="30px"
             android:layout_marginRight="30px" />
 
+
         <com.liangjing.library.OptionItemView
             android:id="@+id/userCellPhone"
             style="@style/OptionItem"
-            android:background="@drawable/option_item_secector"
+            android:background="@drawable/option_item_selector"
             app:left_text="@string/cell_phone"
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />
@@ -143,8 +138,25 @@
         <com.liangjing.library.OptionItemView
             android:id="@+id/diagnosisNumber"
             style="@style/OptionItem"
-            android:background="@drawable/option_item_secector"
+            android:background="@drawable/option_item_selector"
             app:left_text="@string/diagnosis_Number"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="30px"
+            app:left_text_size="16sp"
+            app:right_text_color="@color/gray2"
+            app:right_text_margin_right="40px"
+            app:right_text_size="14sp"/>
+
+        <View
+            style="@style/Line"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px" />
+
+        <com.liangjing.library.OptionItemView
+            android:id="@+id/userPassword"
+            style="@style/OptionItem"
+            android:background="@drawable/option_item_selector"
+            app:left_text="@string/user_password"
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp" />
@@ -155,14 +167,30 @@
             android:layout_marginRight="30px" />
 
         <com.liangjing.library.OptionItemView
+            android:id="@+id/userLocation"
+            style="@style/OptionItem"
+            android:background="@drawable/option_item_selector"
+            app:left_text="@string/my_location"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="30px"
+            app:left_text_size="16sp"
+            app:right_text_color="@color/gray2"
+            app:right_text_margin_right="40px"
+            app:right_text_size="14sp" />
+
+        <View
+            style="@style/Line"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px" />
+
+        <com.liangjing.library.OptionItemView
             android:id="@+id/userBirthday"
             style="@style/OptionItem"
-            android:background="@drawable/option_item_secector"
+            android:background="@drawable/option_item_selector"
             app:left_text="@string/birthday"
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />
@@ -175,12 +203,11 @@
         <com.liangjing.library.OptionItemView
             android:id="@+id/userIdNumber"
             style="@style/OptionItem"
-            android:background="@drawable/option_item_secector"
+            android:background="@drawable/option_item_selector"
             app:left_text="@string/id_number"
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp" />

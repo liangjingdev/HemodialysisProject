@@ -1,5 +1,6 @@
 package com.liangjing.hemodialysisproject.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,16 +13,17 @@ import android.view.MenuItem;
 
 import com.liangjing.hemodialysisproject.Base.BaseActivity;
 import com.liangjing.hemodialysisproject.R;
+import com.liangjing.hemodialysisproject.entity.DoctorEntity;
 import com.liangjing.hemodialysisproject.entity.PatientSchemeEntity;
 import com.liangjing.hemodialysisproject.entity.UserEntity;
 import com.liangjing.hemodialysisproject.fragment.AboutFragment;
+import com.liangjing.hemodialysisproject.fragment.AppointedListFragment;
 import com.liangjing.hemodialysisproject.fragment.CycleScheduleFragment;
 import com.liangjing.hemodialysisproject.fragment.DoctorListFragment;
 import com.liangjing.hemodialysisproject.fragment.MainFragment;
-import com.liangjing.hemodialysisproject.fragment.AppointedListFragment;
 import com.liangjing.hemodialysisproject.fragment.UserDataFragment;
+import com.liangjing.hemodialysisproject.utils.DataUtil;
 import com.liangjing.hemodialysisproject.utils.PatientSchemaUtil;
-import com.liangjing.hemodialysisproject.utils.UserDataUtil;
 import com.liangjing.hemodialysisproject.utils.ViewUtil;
 
 public class UserMainActivity extends BaseActivity {
@@ -77,6 +79,7 @@ public class UserMainActivity extends BaseActivity {
         addDataToDb();
     }
 
+
     private void addDataToDb() {
         //填充一个用户资料进入数据库(测试)
         UserEntity entity = new UserEntity();
@@ -87,9 +90,18 @@ public class UserMainActivity extends BaseActivity {
         entity.setDiagnosisNumber("20");
         entity.setUserLocation("点解啊开封警方吗切记哦去");
         entity.setIdNumber("27489239393");
-        entity.setUserBirthday("1989-1-21");
+        entity.setUserBirthday("1989-06-21");
         entity.setUserGender("男");
-        UserDataUtil.addToDb(entity);
+        entity.setUserPassword("1739502049");
+        DataUtil.addUserToDb(entity);
+
+        DoctorEntity doctorEntity1 = new DoctorEntity();
+        doctorEntity1.setDoctorRealName("林立新");
+        DataUtil.addDoctorToDb(doctorEntity1);
+
+        DoctorEntity doctorEntity2 = new DoctorEntity();
+        doctorEntity2.setDoctorRealName("林俊博");
+        DataUtil.addDoctorToDb(doctorEntity2);
 
         PatientSchemeEntity entity1 = new PatientSchemeEntity();
         entity1.setSchemeId(entity.getId());
@@ -157,7 +169,7 @@ public class UserMainActivity extends BaseActivity {
                         switchFragment(AppointedListFragment.class);
                         break;
                     case R.id.navigation_patient_scheme:
-                        mToolbar.setTitle("个人周期排班信息");
+                        mToolbar.setTitle("个人排班信息");
                         switchFragment(CycleScheduleFragment.class);
                         break;
                     case R.id.navigation_item_about:
@@ -196,7 +208,7 @@ public class UserMainActivity extends BaseActivity {
 
 
     /**
-     * function:监听-返回键
+     * function:监听-返回键(重写onBackPressed()方法)
      */
     @Override
     public void onBackPressed() {
@@ -205,6 +217,12 @@ public class UserMainActivity extends BaseActivity {
         if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
             mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
+
+        //实现 Activity 后台运行(主界面按返回键时不会销毁当前activity)
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
     }
 
     @Override

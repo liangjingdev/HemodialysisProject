@@ -112,4 +112,5 @@ public class PatientSchemeEntity {
         this.dialysisScheme = dialysisScheme;
     }
 
+
 }

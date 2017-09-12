@@ -2,8 +2,8 @@ package com.liangjing.hemodialysisproject.db;
 
 import android.content.Context;
 
-import com.liangjing.hemodialysisproject.DaoMaster;
-import com.liangjing.hemodialysisproject.UserEntityDao;
+import com.liangjing.hemodialysisproject.entity.DaoMaster;
+import com.liangjing.hemodialysisproject.entity.UserEntityDao;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -31,8 +31,8 @@ public class MyOpenHelper extends DaoMaster.OpenHelper {
 
                 UserEntityDao.createTable(db, true);
 
-                // 加入新字段 score
-                db.execSQL("ALTER TABLE 'STUDENT' ADD 'SCORE' TEXT;");
+                // 通知:加入新字段 score
+                //db.execSQL("ALTER TABLE 'STUDENT' ADD 'SCORE' TEXT;");
 
                 break;
         }

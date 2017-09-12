@@ -2,8 +2,9 @@ package com.liangjing.hemodialysisproject.db;
 
 import android.content.Context;
 
-import com.liangjing.hemodialysisproject.DaoMaster;
-import com.liangjing.hemodialysisproject.DaoSession;
+import com.liangjing.hemodialysisproject.entity.DaoMaster;
+import com.liangjing.hemodialysisproject.entity.DaoSession;
+
 
 /**
  * Created by liangjing on 2017/8/17.

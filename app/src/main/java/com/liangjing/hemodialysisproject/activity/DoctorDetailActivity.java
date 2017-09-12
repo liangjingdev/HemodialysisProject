@@ -1,8 +1,10 @@
 package com.liangjing.hemodialysisproject.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
@@ -13,11 +15,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.liangjing.hemodialysisproject.Base.BaseActivity;
 import com.liangjing.hemodialysisproject.R;
 import com.liangjing.hemodialysisproject.adapter.FragPagerAdapter;
-import com.liangjing.hemodialysisproject.fragment.AppointmentFragment;
 import com.liangjing.hemodialysisproject.fragment.DoctorIntroFragment;
+import com.liangjing.hemodialysisproject.fragment.AppointmentFragment;
 
 import java.util.ArrayList;
 
@@ -32,7 +35,6 @@ public class DoctorDetailActivity extends BaseActivity implements AppBarLayout.O
     private AppBarLayout mAppBarLayout;
     private Toolbar mToolbar;
     private Bitmap bgBitmap;
-    private Bitmap imgBitmap;
     private ViewPager mViewPager;
     private LinearLayout mHeadLayout;
     private TabLayout mTabLayout;
@@ -40,9 +42,10 @@ public class DoctorDetailActivity extends BaseActivity implements AppBarLayout.O
     private ArrayList<String> mTitleList;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private FragPagerAdapter mAdapter;
-    private CircleImageView mCircleImageView;
-    private TextView nameTV;
-    private TextView positionTV;
+    private CircleImageView mImageView;
+    private TextView tvDoctorName;
+    private TextView tvDoctorPosition;
+    private Bundle mBundle;
 
 
     @Override
@@ -59,8 +62,12 @@ public class DoctorDetailActivity extends BaseActivity implements AppBarLayout.O
         mFragmentList.add(new AppointmentFragment());
         //添加Fragment对应的title
         mTitleList = new ArrayList<>();
-        mTitleList.add("简介");
-        mTitleList.add("预约");
+        mTitleList.add("医生简介");
+        mTitleList.add("预约挂号");
+
+        //获取Bundle
+        Intent intent = getIntent();
+        mBundle = intent.getExtras();
     }
 
 
@@ -69,15 +76,15 @@ public class DoctorDetailActivity extends BaseActivity implements AppBarLayout.O
         //初始化FragmentAdapter
         mAdapter = new FragPagerAdapter(getSupportFragmentManager(), mFragmentList, mTitleList);
         mCollapsingToolbarLayout = $(R.id.collapsing_toolbar_layout);
-        mAppBarLayout = $(R.id.app_bar_layout);
+        mAppBarLayout = $(R.id.appBarLayout);
         mToolbar = $(R.id.toolbar);
         mViewPager = $(R.id.viewPager);
         setSupportActionBar(mToolbar);
         mHeadLayout = $(R.id.doctorLayout);
         mTabLayout = $(R.id.toolbarTab);
-        mCircleImageView = $(R.id.doctorImg);
-        nameTV = $(R.id.doctorName);
-        positionTV = $(R.id.doctorPosition);
+        mImageView = $(R.id.doctorImg);
+        tvDoctorName = $(R.id.doctorName);
+        tvDoctorPosition = $(R.id.doctorPosition);
     }
 
 
@@ -85,10 +92,13 @@ public class DoctorDetailActivity extends BaseActivity implements AppBarLayout.O
     protected void initEvents() {
 
         //设置医生的头像、姓名、职位
-        imgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.avatar);
-        mCircleImageView.setImageBitmap(imgBitmap);
-        nameTV.setText("某某某");
-        positionTV.setText("主任医师");
+        if (mBundle.get("doctorImage") != null) {
+            Glide.with(this).load(mBundle.get("doctorImage")).dontTransform().into(mImageView);
+        } else {
+            Glide.with(this).load(R.drawable.avatar).centerCrop().into(mImageView);
+        }
+        tvDoctorName.setText(mBundle.getString("doctorRealName"));
+        tvDoctorPosition.setText("主任医师");
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

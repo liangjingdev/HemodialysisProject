@@ -1,7 +1,9 @@
 package com.liangjing.hemodialysisproject.db;
 
-import com.liangjing.hemodialysisproject.PatientSchemeEntityDao;
-import com.liangjing.hemodialysisproject.UserEntityDao;
+
+import com.liangjing.hemodialysisproject.entity.DoctorEntityDao;
+import com.liangjing.hemodialysisproject.entity.PatientSchemeEntityDao;
+import com.liangjing.hemodialysisproject.entity.UserEntityDao;
 
 /**
  * Created by liangjing on 2017/8/17.
@@ -12,7 +14,8 @@ import com.liangjing.hemodialysisproject.UserEntityDao;
 public class DbUtil {
 
     private static UserEntityHelper sUserEntityHelper;
-    private static PatientSchemeHelper sSChemeHelper;
+    private static PatientSchemeHelper sSchemeHelper;
+    private static DoctorEntityHelper sDoctorEntityHelper;
 
     private static UserEntityDao getUserDao() {
         return DbCore.getDaoSession().getUserEntityDao();
@@ -20,6 +23,10 @@ public class DbUtil {
 
     private static PatientSchemeEntityDao getSchemaDao() {
         return DbCore.getDaoSession().getPatientSchemeEntityDao();
+    }
+
+    private static DoctorEntityDao getDoctorDao() {
+        return DbCore.getDaoSession().getDoctorEntityDao();
     }
 
     public static UserEntityHelper getUserEntityHelper() {
@@ -30,9 +37,16 @@ public class DbUtil {
     }
 
     public static PatientSchemeHelper getPatientSchemaHelper() {
-        if (sSChemeHelper == null) {
-            sSChemeHelper = new PatientSchemeHelper(getSchemaDao());
+        if (sSchemeHelper == null) {
+            sSchemeHelper = new PatientSchemeHelper(getSchemaDao());
         }
-        return sSChemeHelper;
+        return sSchemeHelper;
+    }
+
+    public static DoctorEntityHelper getDoctorEntityHelper() {
+        if (sDoctorEntityHelper == null) {
+            sDoctorEntityHelper = new DoctorEntityHelper(getDoctorDao());
+        }
+        return sDoctorEntityHelper;
     }
 }

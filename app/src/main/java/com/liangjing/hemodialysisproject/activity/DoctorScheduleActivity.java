@@ -16,8 +16,8 @@ import android.widget.TextView;
 import com.liangjing.hemodialysisproject.Base.BaseActivity;
 import com.liangjing.hemodialysisproject.R;
 import com.liangjing.hemodialysisproject.adapter.FragPagerAdapter;
-import com.liangjing.hemodialysisproject.fragment.OrderFragment;
-import com.liangjing.hemodialysisproject.fragment.QueryFragment;
+import com.liangjing.hemodialysisproject.fragment.DoctorIntroFragment;
+import com.liangjing.hemodialysisproject.fragment.SchedulingAppointmentFragment;
 
 import java.util.ArrayList;
 
@@ -70,12 +70,12 @@ public class DoctorScheduleActivity extends BaseActivity implements AppBarLayout
     protected void init() {
         //添加Fragment
         mFragmentList = new ArrayList<>();
-        mFragmentList.add(new OrderFragment());
-        mFragmentList.add(new QueryFragment());
+        mFragmentList.add(new DoctorIntroFragment());
+        mFragmentList.add(new SchedulingAppointmentFragment());
         //添加Fragment对应的title
         mTitleList = new ArrayList<>();
+        mTitleList.add("医生简介");
         mTitleList.add("预约排班");
-        mTitleList.add("医生排班");
     }
 
     @Override

@@ -20,9 +20,15 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/doctorImg"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/avatar" />
+                android:layout_width="170px"
+                android:layout_height="170px"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5px"
+                android:paddingTop="10px"
+                android:paddingBottom="10px"
+                android:scaleType="centerCrop"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="1dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -45,7 +51,7 @@
                     android:maxLines="2"
                     android:paddingLeft="20dp"
                     android:paddingTop="10dp"
-                    tools:text="@string/ceshi" />
+                    android:text="@string/ceshi" />
             </LinearLayout>
         </LinearLayout>
 

@@ -9,13 +9,10 @@ import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
-import com.liangjing.hemodialysisproject.DaoSession;
-import com.liangjing.hemodialysisproject.PatientSchemeEntityDao;
-import com.liangjing.hemodialysisproject.UserEntityDao;
 
 /**
  * Created by liangjing on 2017/8/17.
- *
+ * <p>
  * function:用户个人资料实体类
  */
 
@@ -49,6 +46,15 @@ public class UserEntity {
     @Property(nameInDb = "userBirthday")
     private String userBirthday;
 
+    @Property(nameInDb = "userEmail")
+    private String userEmail;
+
+    @Property(nameInDb = "userPassword")
+    private String userPassword;
+
+    @Property(nameInDb = "headPortrait")
+    private byte[] headPortrait;
+
     @ToMany(referencedJoinProperty = "schemeId")
     private List<PatientSchemeEntity> schemeLiist;
 
@@ -60,10 +66,11 @@ public class UserEntity {
     @Generated(hash = 1814575071)
     private transient UserEntityDao myDao;
 
-    @Generated(hash = 1630229926)
+    @Generated(hash = 291550209)
     public UserEntity(Long id, String userName, String realName, String userGender,
             String userLocation, String cellPhone, String diagnosisNumber,
-            String idNumber, String userBirthday) {
+            String idNumber, String userBirthday, String userEmail,
+            String userPassword, byte[] headPortrait) {
         this.id = id;
         this.userName = userName;
         this.realName = realName;
@@ -73,6 +80,9 @@ public class UserEntity {
         this.diagnosisNumber = diagnosisNumber;
         this.idNumber = idNumber;
         this.userBirthday = userBirthday;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.headPortrait = headPortrait;
     }
 
     @Generated(hash = 1433178141)
@@ -151,6 +161,30 @@ public class UserEntity {
         this.userBirthday = userBirthday;
     }
 
+    public String getUserEmail() {
+        return this.userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserPassword() {
+        return this.userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public byte[] getHeadPortrait() {
+        return this.headPortrait;
+    }
+
+    public void setHeadPortrait(byte[] headPortrait) {
+        this.headPortrait = headPortrait;
+    }
+
     /**
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
@@ -223,4 +257,5 @@ public class UserEntity {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getUserEntityDao() : null;
     }
+
 }

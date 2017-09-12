@@ -34,4 +34,17 @@ public class note {
      */
 
 
+/*
+    DialogFragment
+
+    void show (FragmentManager manager,
+               String tag)
+    显示对话框，将片段添加到给定的FragmentManager。这是为了明确创建一个事务，向该标签添加片段并提交它的方便。这并没有交易添加到回栈。
+    当片段被关闭时，将执行一个新的事务，以将其从活动中删除。
+
+    参数
+    manager	FragmentManager：FragmentManager将添加此片段。
+    tag	String：该片段的标签，按照 FragmentTransaction.add。*/
+
+
 }

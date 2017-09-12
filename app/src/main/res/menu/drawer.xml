@@ -28,7 +28,7 @@
         <item
             android:id="@+id/navigation_patient_scheme"
             android:icon="@drawable/order"
-            android:title="周期排班"/>
+            android:title="个人排班"/>
 
         <item
             android:id="@+id/navigation_item_about"

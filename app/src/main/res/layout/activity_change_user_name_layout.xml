@@ -17,6 +17,7 @@
         android:background="@null"
         android:drawableBottom="@drawable/bottom_green_shape"
         android:drawablePadding="10px"
+        android:hint="@string/not_fill"
         android:gravity="bottom"
         android:maxLength="255"
         android:padding="10px"

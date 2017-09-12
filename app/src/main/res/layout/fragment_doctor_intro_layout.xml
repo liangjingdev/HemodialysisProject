@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.liangjing.unirecyclerviewlib.recyclerview.OptionRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rv"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    app:cardBackgroundColor="#ffffff"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="8dp"
-    tools:context="com.liangjing.hemodialysisproject.fragment.DoctorIntroFragment">
+    android:layout_height="match_parent"
+    app:rv_column="1"
+    app:rv_default_animator_open="true"
+    app:rv_divider_color="#00BFFF"
+    app:rv_divider_size="2dp"
+    app:rv_orientation="vertical"
+    app:rv_type="grid">
+</com.liangjing.unirecyclerviewlib.recyclerview.OptionRecyclerView>
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        tools:text="@string/doctor"/>
-
-</android.support.v7.widget.CardView>

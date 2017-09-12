@@ -17,10 +17,11 @@
     <string name="cell_phone">手机号</string>
     <string name="user_name">用户名</string>
     <string name="real_name">真实姓名</string>
-    <string name="password">密码</string>
+    <string name="user_password">修改密码</string>
     <string name="id_number">身份证号码</string>
     <string name="diagnosis_Number">诊断号</string>
-    <string name="birthday">生日日期</string>
+    <string name="birthday">出生日期</string>
+    <string name="user_email">邮箱</string>
 
     <!-- 修改个人信息-->
     <string name="change_user_name">修改用户名！</string>
@@ -31,6 +32,7 @@
     <string name="change_password">修改密码！</string>
     <string name="change_user_gender">修改性别！</string>
     <string name="change_birthday">修改生日日期!</string>
+    <string name="change_user_email">修改邮箱!</string>
 
     <!-- 个人排班信息 -->
     <string name="patient_name">患者 ：</string>
@@ -40,6 +42,22 @@
     <string name="machine_number">血透机编号 ：</string>
     <string name="dialysis_scheme">透析方案 ：</string>
     <string name="tip1">提示：当前是您的个人周期排班信息！</string>
-    <string name="tip2">提示：以下是您已经预约过的医生！点击即可进入预约排班以及查询医生的排班情况！</string>
+    <string name="tip2">提示：以下是您已经预约过的医生！点击进入即可预约排班!</string>
 
+    <string name="save_to_phone">保存图片</string>
+    <string name="save_success">保存成功</string>
+    <string name="save_fail">保存失败</string>
+
+    <!-- orderButton -->
+    <string name="order">预约</string>
+    <string name="already_order">已预约</string>
+
+    <!-- dialog -->
+    <string name="confirm">确认</string>
+    <string name="appointment_true">预约成功</string>
+    <string name="appointment_false">预约成功</string>
+
+    <string name="hospital_intro">我可怕可怕达拉斯啦啊代码卡梅速度慢阿拉曼德拉爱死曼德拉斯克搭理我了那里等你那算了的难受到了那里
+    阿里斯曼德拉玛莎拉蒂姆阿萨姆的拉玛莎拉蒂马里卡梅斯达克玛莎拉面对率为窘境冬季as领导们拉萨曼德拉斯曼德鲁克忙完了吗来的阿穆隆,大蒜的
+    杜威和低i啊开始大肆电脑课集散地就都忘记阿里斯打进了撒到了三季度旺季大，杜威i还uk活动哈桑的奥斯卡。</string>
 </resources>

@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
-    >
+    android:background="@android:color/transparent">
 
-    <RelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        >
+        android:layout_height="?attr/actionBarSize">
 
         <TextView
             android:id="@+id/toolBarTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginRight="?attr/actionBarSize"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:layout_marginRight="?attr/actionBarSize"
-            />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="保存"
+            android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@drawable/save_button_selector"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
-</RelativeLayout>
+            android:enabled="false"
+            android:text="保存"
+            android:visibility="gone" />
 
-<!--
-当前该布局的目的是可以为ToolBar添加标题文字信息，如果你的ToolBar没有实现menu效果，并且你又想在ToolBar上添加一些其它的控件(信息)，
-那么你可以在该布局的基础上进行扩展即可。(比如说可以添加ImageView,Button等等！)-->
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>
+
+    <!--
+    当前该布局的目的是可以为ToolBar添加标题文字信息，如果你的ToolBar没有实现menu效果，并且你又想在ToolBar上添加一些其它的控件(信息)，
+    那么你可以在该布局的基础上进行扩展即可。(比如说可以添加ImageView,Button等等！)-->

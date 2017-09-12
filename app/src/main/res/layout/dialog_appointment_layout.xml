@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="200dp"
+    android:layout_height="250dp"
+    android:background="@drawable/shape_dialog_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/dialog_iv"
+        android:layout_marginTop="30dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/appointment_true"
+        />
+
+    <TextView
+        android:id="@+id/dialog_tv"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/appointment_true"
+        />
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_marginTop="20dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="@string/confirm"
+        android:background="@drawable/save_button_selector"
+        />
+</LinearLayout>

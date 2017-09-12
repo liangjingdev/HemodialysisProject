@@ -1,14 +1,18 @@
 package com.liangjing.hemodialysisproject.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.TypedValue;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.liangjing.hemodialysisproject.Base.BaseFragment;
 import com.liangjing.hemodialysisproject.R;
-import com.liangjing.hemodialysisproject.utils.OrderTimeUtil;
+import com.liangjing.hemodialysisproject.widget.CustomDialog;
 import com.liangjing.unirecyclerviewlib.adapter.AdapterForRecyclerView;
 import com.liangjing.unirecyclerviewlib.adapter.ViewHolderForRecyclerView;
 import com.liangjing.unirecyclerviewlib.recyclerview.OptionRecyclerView;
@@ -16,27 +20,25 @@ import com.liangjing.unirecyclerviewlib.recyclerview.OptionRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.liangjing.hemodialysisproject.R.id.appBarLayout;
+
 /**
- * function:医生详情界面--预约Fragment
- * <p>
- * 需要在该Fragment中添加下拉刷新功能，而不是在AppBar上添加刷新功能，那么该怎么做？
- * <p>
- * 例子：    我见过案例是把SwipeRefreshLayout做为顶级View包在CoordinatorLayout的外面，
- * 我觉得这个做法还是很糟糕的，首先CoordinatorLayout推荐做为顶级View使用，现在又在外面套了个刷新，不伦不类的；
- * 其次，如上面的案例就会出现一个SwipeRefreshLayout会对应三个子列表的刷新，
- * 处理起来还是麻烦。我们是不是可以把SwipeRefreshLayout套在ViewPager外面呢？
- * 也是可以的，但还是麻烦。我们就把下拉刷新这件事交给Fragment自己来做好了。
- * <p>
- * 把下拉刷新这件事交给Fragment自己来做--需要获取到外层Activity的子控件AppBarLayout--getActivity.findViewById()
+ * function:预约挂号fragment
  */
 public class AppointmentFragment extends BaseFragment implements AppBarLayout.OnOffsetChangedListener {
 
-    private OptionRecyclerView mRecyclerView;
+    private OptionRecyclerView mRv;
     private AdapterForRecyclerView mAdapter;
     private SwipeRefreshLayout mSwipe;
-    private AppBarLayout mAppBarLayout;
-    private List<String> mData;
+    private List<String> list;
     private Handler mHandler;
+    private AppBarLayout mAppBarLayout;
+    private Button mOrderButton;
+    private CustomDialog.Builder mBuilder;
+    private View.OnClickListener listener;
+    private CustomDialog mDialog;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected int setLayoutResourceID() {
@@ -45,22 +47,60 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
 
     @Override
     protected void init() {
-        mData = new ArrayList<>();
-        mData = OrderTimeUtil.getOrderTime();
+        list = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            list.add("10:20-12:2" + i);
+        }
         mHandler = new Handler();
+
+        //创建自定义对话框dialog的构建者
+        mBuilder = new CustomDialog.Builder(getmContext());
+
+        //获取SharedPreferences对象以及editor对象
+        preferences = getmContext().getSharedPreferences("buttonFlag", Context.MODE_PRIVATE);
+        editor = preferences.edit();
+    }
+
+    @Override
+    protected void setUpView() {
+        mRv = $(R.id.rv);
+        mSwipe = $(R.id.swipe_refresh_layout);
+        mAppBarLayout = (AppBarLayout) getActivity().findViewById(appBarLayout);
     }
 
     @Override
     protected void initEvents() {
 
-        mAdapter = new AdapterForRecyclerView<String>(getContext(), mData, R.layout.item_order_doctor_layout) {
+        mAdapter = new AdapterForRecyclerView<String>(getmContext(), list, R.layout.item_appointment_layout) {
             @Override
             public void convert(ViewHolderForRecyclerView holder, String item, int position) {
                 holder.setText(R.id.orderDate, item);
+                holder.setText(R.id.orderTimeQuantum, item);
+                holder.setText(R.id.orderNumber, item);
+                holder.setText(R.id.canOrderNumber, item);
+                Button orderButton = holder.getView(R.id.orderButton);
+                orderButton.setOnClickListener(listener);
+                //为列表中每个item的按钮设置一个不同的tag值
+                orderButton.setTag(position);
+
+                //判断sp中是否存有该按钮的状态值,分别处理
+                if (preferences.contains(position + "")) {
+                    //取出状态值
+                    Boolean flag = preferences.getBoolean(position + "", true);
+                    //判断该按钮是可预约状态还是已预约状态
+                    if (!flag) {
+                        orderButton.setText(R.string.already_order);
+                        orderButton.setBackgroundResource(R.drawable.save_button_pressed_shape);
+                        orderButton.setEnabled(false);
+                    }
+                } else {
+                    editor.putBoolean(position + "", true);
+                    editor.commit();
+                }
+
+
             }
         };
-
-        mRecyclerView.setAdapter(mAdapter);
 
         //设置刷新时动画的颜色，可以设置4个
         mSwipe.setProgressBackgroundColorSchemeResource(android.R.color.white);
@@ -92,13 +132,44 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
                 }, 5000);
             }
         });
-    }
 
-    @Override
-    protected void setUpView() {
-        mRecyclerView = $(R.id.rv);
-        mSwipe = $(R.id.swipe_refresh_layout);
-        mAppBarLayout = (AppBarLayout) getActivity().findViewById(R.id.app_bar_layout);
+        mRv.setAdapter(mAdapter);
+
+
+        /**
+         * function：处理预约按钮的点击事件以及自定义dialog中子view的点击事件
+         */
+        listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.orderButton:
+                        mOrderButton = (Button) v;
+                        mDialog = mBuilder.cancelTouchOut(false)
+                                .heightdp(250)
+                                .widthdp(200)
+                                .style(R.style.CustomDialog)
+                                .view(R.layout.dialog_appointment_layout)
+                                .addViewOnclick(R.id.btn_confirm, listener)
+                                .build();
+                        mDialog.show();
+                        break;
+                    case R.id.btn_confirm:
+                        mDialog.dismiss();
+                        //当点击自定义dialog中的确认按钮时，则改变所对应item中的按钮的状态
+                        mOrderButton.setText(R.string.already_order);
+                        mOrderButton.setBackgroundResource(R.drawable.save_button_pressed_shape);
+                        mOrderButton.setEnabled(false);
+
+                        //保存当前位置按钮的状态值(已预约)
+                        editor.remove(mOrderButton.getTag() + "");
+                        editor.putBoolean(mOrderButton.getTag() + "", false);
+                        editor.commit();
+                        break;
+                }
+            }
+        };
+
     }
 
 
@@ -133,6 +204,5 @@ public class AppointmentFragment extends BaseFragment implements AppBarLayout.On
         super.onPause();
         mAppBarLayout.removeOnOffsetChangedListener(this);
     }
-
 
 }

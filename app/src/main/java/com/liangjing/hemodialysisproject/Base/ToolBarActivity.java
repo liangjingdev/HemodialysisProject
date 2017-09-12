@@ -17,7 +17,6 @@ public abstract class ToolBarActivity extends AppCompatActivity {
 
 
     private ToolBarHelper mToolBarHelper;
-
     public Toolbar toolbar;
 
 
@@ -93,6 +92,7 @@ public abstract class ToolBarActivity extends AppCompatActivity {
     protected <T extends View> T $(int id) {
         return (T) super.findViewById(id);
     }
+
 
 
 }

@@ -14,6 +14,7 @@
         android:layout_marginLeft="30px"
         android:layout_marginRight="30px"
         android:layout_marginTop="50px"
+        android:hint="@string/not_fill"
         android:background="@null"
         android:drawableBottom="@drawable/bottom_green_shape"
         android:drawablePadding="10px"
